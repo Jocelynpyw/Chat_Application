@@ -1,8 +1,12 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
+dayjs.extend(relativeTime);
 
-const ChatListItem = () => {
+const ChatListItem = ({chat}) => {
+  console.log('Les props sont : ', chat);
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container}>
       <Image
         source={{
           uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/lukas.jpeg',
@@ -12,13 +16,15 @@ const ChatListItem = () => {
 
       <View style={styles.content}>
         <View style={styles.row}>
-          <Text style={styles.name}>Lukas</Text>
-          <Text style={styles.subTitle}>07:30</Text>
+          <Text style={styles.name}>{chat.user.name}</Text>
+          <Text style={styles.subTitle}>
+            {dayjs(chat.lastMessage.createdAt).fromNow(true)}
+          </Text>
         </View>
 
-        <Text>Jocelyn Je t'aime tu sais </Text>
+        <Text>{chat.lastMessage.text} </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subTitle: {
-    color: 'lime',
+    color: 'gray',
   },
 });
 export default ChatListItem;
