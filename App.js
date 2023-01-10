@@ -16,8 +16,9 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.app.primary,
+    // backgroundColor: colors.app.primary,
+    backgroundColor: 'whitesmoke',
     flex: 1,
-    paddingVertical: 10,
+    paddingVertical: 2,
   },
 });

@@ -5,10 +5,13 @@ import {
 import ChatsScreens from '../screens/ChatsScreens';
 import NotImplementedScreen from '../screens/NotImplementedScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
-
 const MainTabNavigator = () => {
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator initialRouteName="Chats">
       <Tab.Screen
@@ -41,11 +44,20 @@ const MainTabNavigator = () => {
       <Tab.Screen
         name="Chats"
         component={ChatsScreens}
-        options={{
+        options={() => ({
           tabBarIcon: ({color, size}) => (
             <Ionicons name="ios-chatbubbles-sharp" size={size} color={color} />
           ),
-        }}
+          headerRight: () => (
+            <Entypo
+              name="new-message"
+              size={20}
+              color={'royalblue'}
+              style={{marginRight: 15}}
+              onPress={() => navigation.navigate('Contact')}
+            />
+          ),
+        })}
       />
       <Tab.Screen
         name="Settings"
