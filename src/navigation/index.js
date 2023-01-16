@@ -20,7 +20,11 @@ const Navigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen name="Chat" component={ChatScreen} />
-        <Stack.Screen name="Contact" component={ContactsScreen} />
+        <Stack.Screen
+          name="Contact"
+          component={ContactsScreen}
+          options={{title: 'New Chat'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
