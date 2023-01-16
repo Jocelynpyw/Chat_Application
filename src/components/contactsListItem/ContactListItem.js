@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 dayjs.extend(relativeTime);
 
 const ContactListItem = ({user}) => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   // console.log('Les props sont : ', chat);
   return (
     <Pressable style={styles.container}>
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 5,
     height: 70,
+    // backgroundColor: 'lime',
   },
   image: {
     width: 60,
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: 'bold',
     flex: 1,
+    marginTop: 20,
   },
   subTitle: {
     color: 'gray',
